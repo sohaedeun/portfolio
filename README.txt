@@ -1,52 +1,23 @@
-Portfolio Onepage - 배포 패키지
---------------------------------
-포함 파일:
-- index.html  (원페이지 웹사이트)
-- README.txt  (배포 안내)
-
-빠른 배포 방법 (권장):
-1) GitHub Pages
-   - GitHub에 새 저장소 생성, 파일 업로드(push)
-   - Settings > Pages에서 배포 브랜치 선택 (main/master)
-   - 몇 분 후 공개 URL이 생성됩니다.
-
-2) Netlify (드래그 앤 드롭)
-   - https://app.netlify.com -> Sites -> New site -> Deploy manually -> drag & drop index.html 또는 zip 파일 업로드
-   - 간단하고 무료 플랜으로 빠르게 배포 가능
-
-3) Vercel
-   - Vercel 계정 생성 후 프로젝트 연결 (GitHub)
-   - 또는 Vercel CLI로 배포 가능
-
-로컬에서 테스트:
-- index.html 파일을 더블클릭해 브라우저에서 열면 로컬에서 동작 확인 가능합니다.
-- 또는 단순 로컬 서버: python -m http.server 8000 (터미널에서 실행)
-
-커스터마이즈 필요사항:
-- [디자이너 이름], 이메일, 전화번호, 이력서 링크, 실제 이미지/비디오 경로를 교체하세요.
-- YouTube 임베드된 예시는 데모용입니다. 실제 동영상 ID로 교체하세요.
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>My Portfolio</title>
   <style>
-    /* 전체 배경 흰색 */
+    /* 전체 배경 흰색, 글자 검정 */
     body {
+      margin: 0;
+      font-family: Arial, sans-serif;
       background-color: white;
       color: black;
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
     }
 
-    /* 상단 메뉴 바 */
+    /* 상단 네비게이션 바 */
     nav {
-      background-color: #28a745; /* 메뉴 바 녹색 */
+      background-color: #28a745; /* 녹색 메뉴 바 */
       padding: 10px 20px;
       display: flex;
-      justify-content: flex-start;
       gap: 10px;
     }
 
@@ -57,33 +28,85 @@ Portfolio Onepage - 배포 패키지
       border: none;
       padding: 8px 15px;
       border-radius: 5px;
-      cursor: pointer;
       font-weight: bold;
+      cursor: pointer;
       transition: 0.3s;
     }
 
     .menu-button:hover {
-      background-color: #218838;
+      background-color: #218838; /* 호버 시 진한 녹색 */
       color: white;
     }
 
-    /* 본문 영역 */
-    .content {
+    /* 메인 컨텐츠 */
+    .hero {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* 섹션 스타일 */
+    section {
       padding: 50px 20px;
       text-align: center;
+    }
+
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    section p {
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
+
+  <!-- 네비게이션 -->
   <nav>
     <button class="menu-button">Home</button>
     <button class="menu-button">Portfolio</button>
+    <button class="menu-button">About</button>
     <button class="menu-button">Contact</button>
   </nav>
 
-  <div class="content">
+  <!-- 히어로 영역 -->
+  <div class="hero">
     <h1>Welcome to My Portfolio</h1>
-    <p>GitHub Pages에서 호스팅되는 간단한 사이트 예제입니다.</p>
+    <p>여기는 나의 디자인 & 영상 포트폴리오 사이트입니다. GitHub Pages를 통해 배포되었습니다.</p>
   </div>
+
+  <!-- 포트폴리오 섹션 -->
+  <section>
+    <h2>Portfolio</h2>
+    <p>여기에 프로젝트 썸네일이나 영상 링크를 추가할 수 있습니다.</p>
+  </section>
+
+  <!-- About 섹션 -->
+  <section>
+    <h2>About Me</h2>
+    <p>간단한 자기소개를 적고, 연락처나 SNS 링크도 추가할 수 있습니다.</p>
+  </section>
+
+  <!-- Contact 섹션 -->
+  <section>
+    <h2>Contact</h2>
+    <p>이메일: example@email.com</p>
+    <p>GitHub: <a href="https://github.com/sohaedeun" target="_blank">sohaedeun</a></p>
+  </section>
+
 </body>
 </html>
