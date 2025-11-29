@@ -12,28 +12,85 @@
   --subtext:#555;
   --accent:#000;
   --radius:12px;
-  --gap:80px;
+  --gap:40px;
 }
 *{box-sizing:border-box;}
 body{margin:0;font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth;}
 a{text-decoration:none;color:inherit;}
-header{padding:40px 60px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--bg);z-index:100;box-shadow:0 2px 4px rgba(0,0,0,0.05);}
-header h1{font-size:2rem;font-weight:700;}
-nav a{margin-left:24px;font-weight:600;color:var(--text);}
+/* 상단 메뉴 */
+header{
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  background:var(--bg);
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 60px;
+  box-shadow:0 2px 5px rgba(0,0,0,0.05);
+  z-index:100;
+}
+header h1{font-size:1.8rem;font-weight:700;}
+nav a{
+  margin-left:24px;
+  font-weight:600;
+  color:var(--text);
+  transition:0.3s;
+}
 nav a:hover{color:var(--accent);}
-section{padding:var(--gap) 60px;border-bottom:1px solid #ddd;}
-section h2{font-size:2.8rem;font-weight:600;margin-bottom:40px;}
-.project-list{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);}
+section{padding:120px 60px 80px 60px;border-bottom:1px solid #ddd;}
+section h2{font-size:2.5rem;font-weight:600;margin-bottom:40px;}
+
+/* 홈 화면 그리드 */
+.home-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+  gap:var(--gap);
+}
+.home-grid .grid-item{
+  width:100%;
+  aspect-ratio:1/1;
+  background:#eee;
+  border-radius:var(--radius);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.2rem; color:#555; font-weight:600;
+  transition:0.3s;
+}
+.home-grid .grid-item:hover{
+  transform:scale(1.05);
+  background:#ddd;
+}
+
+/* 세부 페이지 - 한 개씩 작품 */
+.project-list{display:flex;flex-direction:column;gap:60px;}
 .project-item{display:flex;flex-direction:column;gap:16px;}
-.project-item img{width:100%;border-radius:var(--radius);object-fit:cover;transition:0.6s ease;}
-.project-item img:hover{transform:scale(1.015);opacity:0.92;}
-.project-item h3{font-size:1.6rem;margin:0;}
-.project-item p{color:var(--subtext);margin:0;}
-video{width:100%;border-radius:var(--radius);margin-bottom:12px;}
-.file-link{display:inline-block;padding:8px 16px;border-radius:8px;background:#eee;color:#222;font-weight:500;margin-top:8px;transition:0.3s;}
+.project-item img, .project-item video{width:100%;border-radius:var(--radius);}
+.file-link{display:inline-block;padding:8px 16px;border-radius:8px;background:#eee;color:#222;font-weight:500;margin-top:8px;transition:0.3s;width:fit-content;}
 .file-link:hover{background:var(--accent);color:#fff;}
-footer{padding:100px 60px;text-align:left;color:var(--subtext);}
-@media(max-width:900px){.project-list{grid-template-columns:1fr;} header h1{font-size:1.8rem;} nav a{margin-left:16px;} section h2{font-size:2.2rem;}}
+
+/* 프로필 */
+.profile-container{display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
+.profile-container img{width:250px;border-radius:var(--radius);}
+.profile-info{flex:1;}
+.profile-info h3{margin-top:0;font-size:1.8rem;}
+.profile-info ul{margin:10px 0;padding-left:20px;}
+.profile-info ul li{margin-bottom:8px;color:var(--subtext);}
+.tools{margin-top:12px;}
+.tools span{display:inline-block;background:#eee;padding:4px 10px;border-radius:6px;margin-right:6px;margin-bottom:6px;font-size:0.9rem;}
+
+/* 문의사항 */
+form{display:flex;flex-direction:column;gap:12px;max-width:500px;}
+input, textarea{padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1rem;width:100%;}
+button{padding:10px 20px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
+button:hover{opacity:0.85;}
+
+footer{padding:80px 60px;text-align:left;color:var(--subtext);}
+
+@media(max-width:900px){
+  header h1{font-size:1.6rem;}
+  nav a{margin-left:16px;}
+  section h2{font-size:2rem;}
+  .profile-container{flex-direction:column;align-items:center;}
+  .profile-container img{width:200px;}
+}
 </style>
 </head>
 <body>
@@ -49,28 +106,115 @@ footer{padding:100px 60px;text-align:left;color:var(--subtext);}
 </header>
 
 <main>
-  <!-- 홈 섹션 -->
+  <!-- 홈 화면: 작품 4개씩 그리드 -->
   <section id="home">
     <h2>홈</h2>
-    <p>감성적인 디자인 & 모션 포트폴리오에 오신 것을 환영합니다.</p>
+    <div class="home-grid">
+      <div class="grid-item">작품 1</div>
+      <div class="grid-item">작품 2</div>
+      <div class="grid-item">작품 3</div>
+      <div class="grid-item">작품 4</div>
+      <div class="grid-item">작품 5</div>
+      <div class="grid-item">작품 6</div>
+      <div class="grid-item">작품 7</div>
+      <div class="grid-item">작품 8</div>
+    </div>
   </section>
 
-  <!-- 비디오 섹션 -->
+  <!-- 프로필 -->
+  <section id="profile">
+    <h2>프로필</h2>
+    <div class="profile-container">
+      <img src="images/profile.jpg" alt="프로필 사진">
+      <div class="profile-info">
+        <h3>디자이너 정윤</h3>
+        <ul>
+          <li>네마프 영화제 서포터즈 2025, 2024</li>
+          <li>노동인권영화제 서포터즈 2020</li>
+          <li>종로콘텐츠클러스터 영상제작 2023</li>
+        </ul>
+        <div class="tools">
+          <strong>사용 가능한 툴:</strong>
+          <span>After Effects</span>
+          <span>Premiere Pro</span>
+          <span>Photoshop</span>
+          <span>InDesign</span>
+          <span>Figma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 비디오 -->
   <section id="videos">
     <h2>비디오</h2>
     <div class="project-list">
       <div class="project-item">
-        <h3>스마일 스위트</h3>
-        <video controls>
-          <source src="videos/smilesuite.mp4" type="video/mp4">
-        </video>
-        <p>브랜드 아이덴티티 & 패키징</p>
+        <h3>모션그래픽 1</h3>
+        <video controls><source src="videos/motion1.mp4" type="video/mp4"></video>
       </div>
       <div class="project-item">
-        <h3>젤리루미</h3>
-        <video controls>
-          <source src="videos/jellylumi.mp4" type="video/mp4">
-        </video>
-        <p>레진 공예 시각화</p>
+        <h3>모션그래픽 2</h3>
+        <video controls><source src="videos/motion2.mp4" type="video/mp4"></video>
       </div>
       <div class="project-item">
+        <h3>모션그래픽 3</h3>
+        <video controls><source src="videos/motion3.mp4" type="video/mp4"></video>
+      </div>
+      <div class="project-item">
+        <h3>다큐멘터리</h3>
+        <video controls><source src="videos/documentary.mp4" type="video/mp4"></video>
+      </div>
+      <div class="project-item">
+        <h3>영화</h3>
+        <video controls><source src="videos/movie.mp4" type="video/mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- 디자인 -->
+  <section id="designs">
+    <h2>디자인</h2>
+    <div class="project-list">
+      <div class="project-item">
+        <h3>패키지 디자인</h3>
+        <img src="images/package.jpg" alt="패키지 디자인">
+        <a href="files/package_design.pdf" class="file-link" download>파일 다운로드</a>
+      </div>
+      <div class="project-item">
+        <h3>UI/UX 디자인</h3>
+        <img src="images/uiux.jpg" alt="UI/UX 디자인">
+        <a href="files/uiux_design.pdf" class="file-link" download>파일 다운로드</a>
+      </div>
+      <div class="project-item">
+        <h3>편집 디자인 책</h3>
+        <img src="images/editing_book.jpg" alt="편집 디자인 책">
+        <a href="files/editing_design.pdf" class="file-link" download>파일 다운로드</a>
+      </div>
+      <div class="project-item">
+        <h3>동화책</h3>
+        <img src="images/storybook.jpg" alt="동화책 디자인">
+        <a href="files/storybook_design.pdf" class="file-link" download>파일 다운로드</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 문의사항 -->
+  <section id="contact">
+    <h2>문의사항</h2>
+    <form>
+      <input type="text" placeholder="이름" required>
+      <input type="email" placeholder="이메일" required>
+      <textarea placeholder="문의 내용을 작성해주세요" rows="6" required></textarea>
+      <button type="submit">보내기</button>
+    </form>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2025 정윤 — Design & Motion Portfolio</p>
+</footer>
+
+</body>
+</html>
