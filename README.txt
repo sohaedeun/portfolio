@@ -25,3 +25,65 @@ Portfolio Onepage - 배포 패키지
 커스터마이즈 필요사항:
 - [디자이너 이름], 이메일, 전화번호, 이력서 링크, 실제 이미지/비디오 경로를 교체하세요.
 - YouTube 임베드된 예시는 데모용입니다. 실제 동영상 ID로 교체하세요.
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <style>
+    /* 전체 배경 흰색 */
+    body {
+      background-color: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 상단 메뉴 바 */
+    nav {
+      background-color: #28a745; /* 메뉴 바 녹색 */
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
+    }
+
+    /* 메뉴 버튼 */
+    .menu-button {
+      background-color: white;
+      color: #28a745;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .menu-button:hover {
+      background-color: #218838;
+      color: white;
+    }
+
+    /* 본문 영역 */
+    .content {
+      padding: 50px 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <button class="menu-button">Home</button>
+    <button class="menu-button">Portfolio</button>
+    <button class="menu-button">Contact</button>
+  </nav>
+
+  <div class="content">
+    <h1>Welcome to My Portfolio</h1>
+    <p>GitHub Pages에서 호스팅되는 간단한 사이트 예제입니다.</p>
+  </div>
+</body>
+</html>
