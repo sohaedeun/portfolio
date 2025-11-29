@@ -84,4 +84,82 @@
 
   <script src="main.js"></script>
 </body>
+</html><!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sohaedeun Portfolio</title>
+  <meta name="description" content="Sohaedeun의 디자인 및 영상 포트폴리오 사이트.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <button class="menu-button" onclick="scrollToSection('hero')">메인</button>
+    <button class="menu-button" onclick="scrollToSection('design')">디자인</button>
+    <button class="menu-button" onclick="scrollToSection('video')">영상</button>
+    <button class="menu-button" onclick="scrollToSection('contact')">문의</button>
+  </nav>
+
+  <!-- Main / Hero Section (Profile) -->
+  <section class="hero" id="hero">
+    <img src="images/profile.png" alt="프로필 사진" class="profile-img">
+    <h1>Sohaedeun</h1>
+    <p>디자인과 영상 작업을 전문으로 하는 프리랜서</p>
+  </section>
+
+  <!-- Design Section -->
+  <section id="design">
+    <h2>Design</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <img src="images/design1.png" alt="Design Project 1">
+        <div class="card-content">
+          <h3>Design Project 1</h3>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <img src="images/design2.png" alt="Design Project 2">
+        <div class="card-content">
+          <h3>Design Project 2</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video">
+    <h2>Video</h2>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+        <video controls poster="images/video1-thumbnail.png">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+          <h3>Video Project 1</h3>
+        </div>
+      </div>
+      <div class="portfolio-card">
+        <video controls poster="images/video2-thumbnail.png">
+          <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+          <h3>Video Project 2</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>문의</h2>
+    <p>이메일: example@email.com</p>
+    <p>GitHub: <a href="https://github.com/sohaedeun" target="_blank">sohaedeun</a></p>
+  </section>
+
+  <script src="main.js"></script>
+</body>
 </html>
+
