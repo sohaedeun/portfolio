@@ -3,127 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <style>
-    /* 기본 스타일 */
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: white;
-      color: black;
-    }
-
-    /* 네비게이션 바 */
-    nav {
-      background-color: #28a745;
-      padding: 10px 20px;
-      display: flex;
-      gap: 10px;
-    }
-
-    .menu-button {
-      background-color: white;
-      color: #28a745;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .menu-button:hover {
-      background-color: #218838;
-      color: white;
-    }
-
-    /* 히어로 섹션 */
-    .hero {
-      padding: 100px 20px;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* 섹션 공통 */
-    section {
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    section p {
-      font-size: 1rem;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    /* 포트폴리오 카드 */
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-
-    .portfolio-card {
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .portfolio-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    .portfolio-card img, .portfolio-card video {
-      width: 100%;
-      display: block;
-    }
-
-    .portfolio-card .card-content {
-      padding: 15px;
-    }
-
-    .portfolio-card .card-content h3 {
-      margin: 0 0 10px 0;
-      font-size: 1.2rem;
-    }
-
-    .portfolio-card .card-content p {
-      font-size: 0.95rem;
-      color: #555;
-    }
-
-    /* Contact 링크 */
-    a {
-      color: #28a745;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>Sohaedeun Portfolio</title>
+  <meta name="description" content="Sohaedeun의 디자인 및 영상 포트폴리오 사이트. 최신 프로젝트와 작품을 확인하세요.">
+  <meta property="og:title" content="Sohaedeun Portfolio">
+  <meta property="og:description" content="디자인과 영상 프로젝트를 모아둔 포트폴리오 사이트입니다.">
+  <meta property="og:image" content="images/design1.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- 네비게이션 -->
+  <!-- Navigation -->
   <nav>
     <button class="menu-button" onclick="scrollToSection('hero')">Home</button>
     <button class="menu-button" onclick="scrollToSection('portfolio')">Portfolio</button>
@@ -131,74 +19,69 @@
     <button class="menu-button" onclick="scrollToSection('contact')">Contact</button>
   </nav>
 
-  <!-- 히어로 -->
-  <div class="hero" id="hero">
+  <!-- Hero -->
+  <section class="hero" id="hero">
     <h1>Welcome to My Portfolio</h1>
     <p>디자인과 영상 프로젝트를 모아둔 나의 포트폴리오 사이트입니다. GitHub Pages로 호스팅되었습니다.</p>
-  </div>
+  </section>
 
-  <!-- 포트폴리오 섹션 -->
+  <!-- Portfolio -->
   <section id="portfolio">
     <h2>Portfolio</h2>
     <div class="portfolio-grid">
       <!-- 디자인 프로젝트 카드 -->
       <div class="portfolio-card">
-        <img src="https://via.placeholder.com/400x250.png?text=Design+1" alt="Design 1">
+        <img src="images/design1.png" alt="Design Project 1">
         <div class="card-content">
           <h3>Design Project 1</h3>
-          <p>브랜딩 디자인, 로고 및 패키지 디자인 프로젝트 예시.</p>
+          <p>브랜딩 및 패키지 디자인 프로젝트 예시</p>
         </div>
       </div>
       <div class="portfolio-card">
-        <img src="https://via.placeholder.com/400x250.png?text=Design+2" alt="Design 2">
+        <img src="images/design2.png" alt="Design Project 2">
         <div class="card-content">
           <h3>Design Project 2</h3>
-          <p>웹/UI 디자인 프로젝트 예시. 반응형 레이아웃 적용.</p>
+          <p>웹/UI 디자인 프로젝트 예시</p>
         </div>
       </div>
 
       <!-- 영상 프로젝트 카드 -->
       <div class="portfolio-card">
-        <video controls>
+        <video controls poster="images/video1-thumbnail.png" aria-label="Video Project 1">
           <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="card-content">
           <h3>Video Project 1</h3>
-          <p>단편 영상 프로젝트 예시. 모션 그래픽 포함.</p>
+          <p>단편 영상 프로젝트 예시</p>
         </div>
       </div>
       <div class="portfolio-card">
-        <video controls>
+        <video controls poster="images/video2-thumbnail.png" aria-label="Video Project 2">
           <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
         <div class="card-content">
           <h3>Video Project 2</h3>
-          <p>홍보 영상 프로젝트 예시. 영상 편집과 모션 디자인 포함.</p>
+          <p>홍보 영상 프로젝트 예시</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About 섹션 -->
+  <!-- About -->
   <section id="about">
     <h2>About Me</h2>
     <p>저는 디자인과 영상 제작을 전문으로 하는 프리랜서입니다. 창의적이고 현대적인 스타일의 프로젝트를 추구합니다.</p>
   </section>
 
-  <!-- Contact 섹션 -->
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact</h2>
     <p>이메일: example@email.com</p>
     <p>GitHub: <a href="https://github.com/sohaedeun" target="_blank">sohaedeun</a></p>
   </section>
 
-  <script>
-    // 메뉴 클릭 시 스크롤
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({behavior: 'smooth'});
-    }
-  </script>
+  <script src="main.js"></script>
 </body>
 </html>
