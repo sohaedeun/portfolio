@@ -3,133 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sohaedeun Portfolio</title>
-  <meta name="description" content="Sohaedeun의 디자인 및 영상 포트폴리오 사이트.">
-  <link rel="stylesheet" href="style.css">
+  <title>정윤 포트폴리오</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap">
+  <style>
+    /* ========== 감성적 디자인 C 스타일 ========== */
+    :root {
+      --bg: #fafafa;
+      --text: #222;
+      --subtext: #555;
+      --accent: #000;
+      --radius: 12px;
+      --gap: 80px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Pretendard', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* Header */
+    header {
+      padding: 80px 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    header h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    header p {
+      font-size: 1.25rem;
+      color: var(--subtext);
+    }
+
+    /* Hero */
+    .hero {
+      padding: var(--gap) 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* Section */
+    section {
+      padding: var(--gap) 60px;
+      border-bottom: 1px solid #ddd;
+    }
+    section h2 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      margin-bottom: 40px;
+    }
+
+    /* 프로젝트 그리드 */
+    .project-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+    }
+    .project-item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .project-item img {
+      width: 100%;
+      border-radius: var(--radius);
+      object-fit: cover;
+      transition: 0.6s ease;
+    }
+    .project-item img:hover {
+      transform: scale(1.015);
+      opacity: 0.92;
+    }
+    .project-item h3 {
+      font-size: 1.6rem;
+      margin: 0;
+    }
+    .project-item p {
+      color: var(--subtext);
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      padding: 100px 60px;
+      text-align: left;
+      color: var(--subtext);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .project-list {
+        grid-template-columns: 1fr;
+      }
+      header h1 { font-size: 3rem; }
+      section h2 { font-size: 2.2rem; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>정윤</h1>
+    <p>Design & Motion Portfolio — 감성적 여백과 타이포 강조</p>
+  </header>
 
-  <!-- Navigation -->
-  <nav>
-    <button class="menu-button" data-target="hero">메인</button>
-    <button class="menu-button" data-target="design">디자인</button>
-    <button class="menu-button" data-target="video">영상</button>
-    <button class="menu-button" data-target="contact">문의</button>
-  </nav>
+  <main>
+    <section class="hero">
+      <h2>Selected Works</h2>
+      <p>브랜딩, 모션, 영상 중심으로 감성적인 프로젝트를 선별했습니다.</p>
+    </section>
 
-  <!-- Main / Hero Section -->
-  <section class="hero section" id="hero">
-    <img src="images/profile.png" alt="프로필 사진" class="profile-img">
-    <h1>Sohaedeun</h1>
-    <p>디자인과 영상 작업을 전문으로 하는 프리랜서</p>
-  </section>
-
-  <!-- Design Section -->
-  <section class="section" id="design">
-    <h2>Design</h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <img src="images/design1.png" alt="Design Project 1">
-        <div class="card-content">
-          <h3>Design Project 1</h3>
-          <p>브랜딩 및 패키지 디자인 프로젝트</p>
+    <section id="work">
+      <h2>Projects</h2>
+      <div class="project-list">
+        <div class="project-item">
+          <img src="images/project1.jpg" alt="스마일 스위트">
+          <h3>스마일 스위트</h3>
+          <p>브랜드 아이덴티티 & 패키징</p>
+        </div>
+        <div class="project-item">
+          <img src="images/project2.jpg" alt="젤리루미">
+          <h3>젤리루미</h3>
+          <p>레진 공예 시각화</p>
+        </div>
+        <div class="project-item">
+          <img src="images/project3.jpg" alt="Urban Motion">
+          <h3>Urban Motion</h3>
+          <p>도시 영상 프로젝트</p>
+        </div>
+        <div class="project-item">
+          <img src="images/project4.jpg" alt="브랜딩">
+          <h3>Brand Story</h3>
+          <p>브랜드 영상 제작</p>
         </div>
       </div>
-      <div class="portfolio-card">
-        <img src="images/design2.png" alt="Design Project 2">
-        <div class="card-content">
-          <h3>Design Project 2</h3>
-          <p>웹/UI 디자인 프로젝트</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Video
-  body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: white;
-  color: black;
-}
+    <section id="about">
+      <h2>About</h2>
+      <p>저는 시각적 스토리텔링을 중심으로 브랜드, 모션, 패키징 디자인을 다루는 디자이너입니다. 여백과 타이포그래피를 활용하여 감성적이고 조화로운 디자인을 추구합니다.</p>
+    </section>
 
-/* Navigation */
-nav {
-  background-color: #28a745;
-  padding: 10px 20px;
-  display: flex;
-  gap: 10px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>프로젝트 의뢰, 협업, 문의는 아래 이메일로 연락 주세요.</p>
+      <p>your.email@example.com</p>
+    </section>
+  </main>
 
-.menu-button {
-  background-color: white;
-  color: #28a745;
-  border: none;
-  padding: 8px 15px;
-  border-radius: 5px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.menu-button:hover {
-  background-color: #218838;
-  color: white;
-}
-
-/* Sections */
-.section { display: none; padding: 50px 20px; text-align: center; }
-.section.active { display: block; }
-
-/* Hero */
-.hero {
-  display: block;
-  text-align: center;
-  padding: 100px 20px;
-}
-
-.profile-img {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 20px;
-}
-
-.hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
-.hero p { font-size: 1.2rem; color: #555; }
-
-/* Portfolio Grid */
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-}
-
-.portfolio-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.portfolio-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.portfolio-card img, .portfolio-card video {
-  width: 100%;
-  display: block;
-}
-
-.card-content { padding: 15px; }
-.card-content h3 { margin: 0; font-size: 1.2rem; }
-
-a { color: #28a745; text-decoration: none; }
-a:hover { text-decoration: underline; }
-
+  <footer>
+    <p>© 2025 정윤 — Design & Motion Portfolio</p>
+  </footer>
+</body>
+</html>
