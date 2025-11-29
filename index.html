@@ -23,7 +23,7 @@ header{
   display:flex;
   flex-direction:column;
   align-items:center;
-  padding:60px 20px 20px 20px;
+  padding:40px 20px 20px 20px;
   text-align:center;
   background:var(--bg);
 }
@@ -42,6 +42,16 @@ nav a:hover{color:var(--accent);}
 section{padding:120px 60px 80px 60px;border-bottom:1px solid #ddd;}
 section h2{font-size:2.5rem;font-weight:600;margin-bottom:40px;}
 
+/* 프로필 - 메인 화면 */
+.profile-container{display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:center;}
+.profile-container img{width:300px;border-radius:var(--radius);}
+.profile-info{flex:1;min-width:250px;}
+.profile-info h3{margin-top:0;font-size:2rem;}
+.profile-info ul{margin:10px 0;padding-left:20px;}
+.profile-info ul li{margin-bottom:8px;color:var(--subtext);}
+.tools{margin-top:12px;}
+.tools span{display:inline-block;background:#eee;padding:4px 10px;border-radius:6px;margin-right:6px;margin-bottom:6px;font-size:0.9rem;}
+
 /* 홈 그리드 */
 .home-grid{
   display:grid;
@@ -55,7 +65,6 @@ section h2{font-size:2.5rem;font-weight:600;margin-bottom:40px;}
   border-radius:var(--radius);
   display:flex; align-items:center; justify-content:center;
   font-size:1.2rem; color:#555; font-weight:600;
-  cursor:pointer;
   transition:0.3s;
 }
 .home-grid .grid-item:hover{
@@ -70,16 +79,6 @@ section h2{font-size:2.5rem;font-weight:600;margin-bottom:40px;}
 .file-link{display:inline-block;padding:8px 16px;border-radius:8px;background:#eee;color:#222;font-weight:500;margin-top:8px;transition:0.3s;width:fit-content;}
 .file-link:hover{background:var(--accent);color:#fff;}
 
-/* 프로필 */
-.profile-container{display:flex;flex-wrap:wrap;gap:40px;align-items:center;}
-.profile-container img{width:250px;border-radius:var(--radius);}
-.profile-info{flex:1;}
-.profile-info h3{margin-top:0;font-size:1.8rem;}
-.profile-info ul{margin:10px 0;padding-left:20px;}
-.profile-info ul li{margin-bottom:8px;color:var(--subtext);}
-.tools{margin-top:12px;}
-.tools span{display:inline-block;background:#eee;padding:4px 10px;border-radius:6px;margin-right:6px;margin-bottom:6px;font-size:0.9rem;}
-
 /* 문의사항 */
 form{display:flex;flex-direction:column;gap:12px;max-width:500px;}
 input, textarea{padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1rem;width:100%;}
@@ -87,36 +86,6 @@ button{padding:10px 20px;border:none;border-radius:8px;background:var(--accent);
 button:hover{opacity:0.85;}
 
 footer{padding:80px 60px;text-align:left;color:var(--subtext);}
-
-/* 모달 */
-.modal{
-  display:none;
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.8);
-  justify-content:center;
-  align-items:center;
-  z-index:200;
-}
-.modal-content{
-  position:relative;
-  max-width:80%;
-  max-height:80%;
-}
-.modal-content img, .modal-content video{
-  width:100%;
-  height:auto;
-  border-radius:var(--radius);
-}
-.modal-close{
-  position:absolute;
-  top:-10px; right:-10px;
-  background:#fff; color:#000;
-  border:none; border-radius:50%;
-  width:30px; height:30px; font-weight:bold;
-  cursor:pointer;
-}
 
 @media(max-width:900px){
   header h1.banner{font-size:2.2rem;}
@@ -141,20 +110,8 @@ footer{padding:80px 60px;text-align:left;color:var(--subtext);}
 </header>
 
 <main>
-  <!-- 홈 -->
+  <!-- 메인 화면: 프로필 -->
   <section id="home">
-    <h2>홈</h2>
-    <div class="home-grid">
-      <div class="grid-item" data-target="videos">모션그래픽 1</div>
-      <div class="grid-item" data-target="videos">모션그래픽 2</div>
-      <div class="grid-item" data-target="videos">모션그래픽 3</div>
-      <div class="grid-item" data-target="videos">다큐멘터리</div>
-    </div>
-  </section>
-
-  <!-- 프로필 -->
-  <section id="profile">
-    <h2>프로필</h2>
     <div class="profile-container">
       <img src="images/profile.jpg" alt="프로필 사진">
       <div class="profile-info">
@@ -176,7 +133,7 @@ footer{padding:80px 60px;text-align:left;color:var(--subtext);}
     </div>
   </section>
 
-  <!-- 비디오 -->
+  <!-- 비디오 섹션 -->
   <section id="videos">
     <h2>비디오</h2>
     <div class="project-list">
@@ -203,7 +160,7 @@ footer{padding:80px 60px;text-align:left;color:var(--subtext);}
     </div>
   </section>
 
-  <!-- 디자인 -->
+  <!-- 디자인 섹션 -->
   <section id="designs">
     <h2>디자인</h2>
     <div class="project-list">
@@ -245,34 +202,6 @@ footer{padding:80px 60px;text-align:left;color:var(--subtext);}
 <footer>
   <p>© 2025 정윤 — Design & Motion Portfolio</p>
 </footer>
-
-<!-- 모달 -->
-<div class="modal" id="modal">
-  <div class="modal-content" id="modal-content"></div>
-  <button class="modal-close" id="modal-close">&times;</button>
-</div>
-
-<script>
-// 홈 썸네일 클릭 → 세부 페이지 스크롤 & 모달
-const items = document.querySelectorAll('.home-grid .grid-item');
-const modal = document.getElementById('modal');
-const modalContent = document.getElementById('modal-content');
-const modalClose = document.getElementById('modal-close');
-
-items.forEach(item => {
-  item.addEventListener('click', () => {
-    const targetId = item.getAttribute('data-target');
-    const firstProject = document.querySelector(`#${targetId} .project-item`);
-    const clone = firstProject.cloneNode(true);
-    modalContent.innerHTML = '';
-    modalContent.appendChild(clone);
-    modal.style.display = 'flex';
-  });
-});
-
-modalClose.addEventListener('click', () => { modal.style.display='none'; });
-modal.addEventListener('click', e => { if(e.target===modal) modal.style.display='none'; });
-</script>
 
 </body>
 </html>
