@@ -61,11 +61,11 @@ body {
 }
 
 .menu-btn {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 100px; /* 2배 축소 */
-    height: 100px; /* 2배 축소 */
+    width: 100px;
+    height: 100px;
     font-size: 1rem;
     font-weight: 700;
     text-decoration: none;
@@ -258,7 +258,8 @@ function enterPortfolio() {
 
 window.addEventListener("load", () => {
     hideAllSections();
-    document.getElementById("navbar").style.display = "flex";
+    document.getElementById("intro").style.display = "flex"; // 새로고침 시 항상 인트로
+    document.getElementById("navbar").style.display = "flex"; // 메뉴 가로로 표시
 });
 </script>
 
