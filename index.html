@@ -1,11 +1,24 @@
-<!-- ======================
-     인트로
-====================== -->
-<section id="intro" onclick="enterPortfolio()">
-    <div id="intro-text">PORTFOLIO</div>
-</section>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sohaedeun Portfolio</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #fff;
+    color: #222;
+    scroll-behavior: smooth;
+}
+
+/* ======================
+   인트로 배너
+====================== */
 #intro {
     height: 33vh;
     display: flex;
@@ -21,7 +34,7 @@
 
 #intro-text {
     background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-    background-size: 600% 100%; /* 그라디언트 넓게 설정 */
+    background-size: 600% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: rainbow 10s linear infinite;
@@ -32,4 +45,225 @@
     50% {background-position: 100% 0%;}
     100% {background-position: 0% 0%;}
 }
+
+/* ======================
+   메뉴
+====================== */
+#navbar {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px 0;
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    border-bottom: 1px solid #e6e6e6;
+    margin-top: -5px; /* 배너 바로 아래 */
+}
+
+.menu-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #222;
+    cursor: pointer;
+    border-radius: 12px;
+    border: 2px solid #222;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+/* ======================
+   페이지 섹션
+====================== */
+.page-section {
+    display: none;
+    padding: 40px 20px;
+}
+
+/* 프로필 */
+#profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+#profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+#profile-info {
+    max-width: 600px;
+    text-align: left;
+}
+
+/* 그리드 카드 */
+.grid-works {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; 
+    margin-top: 30px;
+}
+
+.work {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f4f4f4;
+}
+
+.work img, .work video {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 문의 폼 */
+form input, form textarea {
+    width: 300px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
 </style>
+</head>
+<body>
+
+<!-- ======================
+     인트로
+====================== -->
+<section id="intro" onclick="enterPortfolio()">
+    <div id="intro-text">PORTFOLIO</div>
+</section>
+
+<!-- ======================
+     메뉴
+====================== -->
+<header id="navbar">
+    <nav class="nav-menu">
+        <a class="menu-btn" onclick="showSection('profile')">프로필</a>
+        <a class="menu-btn" onclick="showSection('video')">비디오</a>
+        <a class="menu-btn" onclick="showSection('design')">디자인</a>
+        <a class="menu-btn" onclick="showSection('contact')">문의사항</a>
+    </nav>
+</header>
+
+<!-- ======================
+     프로필
+====================== -->
+<section id="profile" class="page-section">
+    <div id="profile-container">
+        <img src="https://via.placeholder.com/200" alt="프로필">
+        <div id="profile-info">
+            <h2>디자이너 정윤</h2>
+            <p>이력<br>
+            - 네마프 영화제 서포터즈 2025, 2024<br>
+            - 노동인권영화제 서포터즈 2020<br>
+            - 종로콘텐츠클러스터 영상제작 2023<br><br>
+            사용 가능 툴: After Effects, Premiere Pro, Photoshop, InDesign, Figma</p>
+        </div>
+    </div>
+</section>
+
+<!-- ======================
+     비디오
+====================== -->
+<section id="video" class="page-section">
+    <h2>Video Works</h2>
+    <div class="grid-works">
+        <div class="work">
+            <video controls poster="https://via.placeholder.com/300x300">
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="work">
+            <video controls poster="https://via.placeholder.com/300x300">
+                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="work"><img src="https://via.placeholder.com/300x300" alt="Video 3"></div>
+        <div class="work"><img src="https://via.placeholder.com/300x300" alt="Video 4"></div>
+    </div>
+</section>
+
+<!-- ======================
+     디자인
+====================== -->
+<section id="design" class="page-section">
+    <h2>Design Works</h2>
+    <div class="grid-works">
+        <div class="work"><img src="https://via.placeholder.com/300x300" alt="Design 1"></div>
+        <div class="work"><img src="https://via.placeholder.com/300x300" alt="Design 2"></div>
+        <div class="work"><img src="https://via.placeholder.com/300x300" alt="Design 3"></div>
+        <div class="work"><img src="https://via.placeholder.com/300x300" alt="Design 4"></div>
+    </div>
+</section>
+
+<!-- ======================
+     문의사항
+====================== -->
+<section id="contact" class="page-section">
+    <h2>문의사항</h2>
+    <form>
+        <input type="text" placeholder="이름" required><br>
+        <input type="email" placeholder="이메일" required><br>
+        <textarea placeholder="문의 내용" required></textarea><br>
+        <button type="submit">보내기</button>
+    </form>
+</section>
+
+<script>
+function hideAllSections() {
+    document.querySelectorAll(".page-section").forEach(sec => sec.style.display = "none");
+}
+
+function showSection(id) {
+    hideAllSections();
+    document.getElementById(id).style.display = "block";
+    document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function enterPortfolio() {
+    document.getElementById("intro").style.display = "none"; // 인트로 클릭 시 사라짐
+    showSection("profile"); // 프로필 섹션 표시
+}
+
+window.addEventListener("load", () => {
+    hideAllSections();
+    document.getElementById("intro").style.display = "flex"; // 새로고침 시 항상 인트로
+    document.getElementById("navbar").style.display = "flex"; // 메뉴 가로로 표시
+});
+</script>
+
+</body>
+</html>
