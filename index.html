@@ -17,10 +17,9 @@ body {
 }
 
 /* ======================
-   인트로 배너
+   인트로 & 배너
 ====================== */
-#intro {
-    height: 33vh;
+#intro, #banner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -29,10 +28,19 @@ body {
     cursor: pointer;
     user-select: none;
     text-align: center;
-    background: #fff;
+    transition: all 0.5s ease;
 }
 
-#intro-text {
+#intro {
+    height: 100vh;
+}
+
+#banner {
+    height: 25vh; /* 배너 높이 */
+    display: none;
+}
+
+#banner-text {
     background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
     background-size: 600% 100%;
     -webkit-background-clip: text;
@@ -50,7 +58,7 @@ body {
    메뉴
 ====================== */
 #navbar {
-    display: flex;
+    display: none;
     justify-content: center;
     gap: 20px;
     padding: 10px 0;
@@ -59,7 +67,6 @@ body {
     top: 0;
     z-index: 9;
     border-bottom: 1px solid #e6e6e6;
-    margin-top: -5px;
 }
 
 .menu-btn {
@@ -162,8 +169,15 @@ form button {
 <!-- ======================
      인트로
 ====================== -->
-<section id="intro" onclick="enterPortfolio()">
+<section id="intro" onclick="showBanner()">
     <div id="intro-text">PORTFOLIO</div>
+</section>
+
+<!-- ======================
+     배너
+====================== -->
+<section id="banner" onclick="showIntro()">
+    <div id="banner-text">PORTFOLIO</div>
 </section>
 
 <!-- ======================
@@ -201,16 +215,8 @@ form button {
 <section id="video" class="page-section">
     <h2>Video Works</h2>
     <div class="grid-works">
-        <div class="work">
-            <video controls poster="https://via.placeholder.com/300x300">
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-            </video>
-        </div>
-        <div class="work">
-            <video controls poster="https://via.placeholder.com/300x300">
-                <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-            </video>
-        </div>
+        <div class="work"><video controls><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4"></video></div>
+        <div class="work"><video controls><source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4"></video></div>
         <div class="work"><img src="https://via.placeholder.com/300x300" alt="Video 3"></div>
         <div class="work"><img src="https://via.placeholder.com/300x300" alt="Video 4"></div>
     </div>
@@ -253,15 +259,22 @@ function showSection(id) {
     document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-function enterPortfolio() {
-    document.getElementById("intro").style.display = "none"; // 인트로 클릭 시 사라짐
-    showSection("profile"); // 프로필 섹션 표시
+function showBanner() {
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("banner").style.display = "flex";
+    document.getElementById("navbar").style.display = "flex";
+}
+
+function showIntro() {
+    document.getElementById("banner").style.display = "none";
+    document.getElementById("intro").style.display = "flex";
+    hideAllSections();
 }
 
 window.addEventListener("load", () => {
-    hideAllSections();
-    document.getElementById("intro").style.display = "flex"; // 새로고침 시 항상 인트로
-    document.getElementById("navbar").style.display = "flex"; // 메뉴 가로로 표시
+    document.getElementById("intro").style.display = "flex"; // 새로고침 시 인트로
+    document.getElementById("banner").style.display = "none";
+    document.getElementById("navbar").style.display = "none";
 });
 </script>
 
