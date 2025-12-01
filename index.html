@@ -2,286 +2,268 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>정윤 포트폴리오</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;600;700&display=swap">
+<title>Portfolio</title>
 <style>
-:root {
-  --bg:#fafafa;
-  --text:#222;
-  --subtext:#555;
-  --accent:#000;
-  --radius:12px;
-  --gap:40px;
-}
-*{box-sizing:border-box;}
-body{margin:0;font-family:'Pretendard',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;scroll-behavior:smooth;}
-a{text-decoration:none;color:inherit;}
-
-/* 헤더 */
-header{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:40px 20px 20px 20px;
-  text-align:center;
-  background:var(--bg);
-}
-header h1.banner{
-  font-size:3rem;
-  font-weight:700;
-  letter-spacing:4px;
-  margin:0 0 20px 0;
-  color:var(--accent);
-}
-nav{display:flex; gap:40px;}
-nav a{font-weight:600;color:var(--text);font-size:1.1rem;transition:0.3s;}
-nav a:hover{color:var(--accent);}
-
-/* 섹션 */
-section{padding:120px 60px 80px 60px;border-bottom:1px solid #ddd;}
-section h2{font-size:2.5rem;font-weight:600;margin-bottom:40px;}
-
-/* 프로필 - 메인 화면 */
-.profile-container{display:flex;flex-wrap:wrap;gap:40px;align-items:center;justify-content:center;}
-.profile-container img{width:300px;border-radius:var(--radius);}
-.profile-info{flex:1;min-width:250px;}
-.profile-info h3{margin-top:0;font-size:2rem;}
-.profile-info ul{margin:10px 0;padding-left:20px;}
-.profile-info ul li{margin-bottom:8px;color:var(--subtext);}
-.tools{margin-top:12px;}
-.tools span{display:inline-block;background:#eee;padding:4px 10px;border-radius:6px;margin-right:6px;margin-bottom:6px;font-size:0.9rem;}
-
-/* 홈 그리드 */
-.home-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
-  gap:var(--gap);
-}
-.home-grid .grid-item{
-  width:100%;
-  aspect-ratio:1/1;
-  background:#eee;
-  border-radius:var(--radius);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.2rem; color:#555; font-weight:600;
-  transition:0.3s;
-}
-.home-grid .grid-item:hover{
-  transform:scale(1.05);
-  background:#ddd;
+/* -------------------- 기본 설정 -------------------- */
+body {
+  margin: 0;
+  font-family: Pretendard, sans-serif;
+  background: #fafafa;
+  color: #222;
 }
 
-/* 프로젝트 리스트 - 세부 페이지 */
-.project-list{display:flex;flex-direction:column;gap:60px;}
-.project-item{display:flex;flex-direction:column;gap:16px;}
-.project-item img, .project-item video{width:100%;border-radius:var(--radius);}
-.file-link{display:inline-block;padding:8px 16px;border-radius:8px;background:#eee;color:#222;font-weight:500;margin-top:8px;transition:0.3s;width:fit-content;}
-.file-link:hover{background:var(--accent);color:#fff;}
-
-/* 문의사항 */
-form{display:flex;flex-direction:column;gap:12px;max-width:500px;}
-input, textarea{padding:10px;border-radius:8px;border:1px solid #ccc;font-size:1rem;width:100%;}
-button{padding:10px 20px;border:none;border-radius:8px;background:var(--accent);color:#fff;font-weight:600;cursor:pointer;transition:0.3s;}
-button:hover{opacity:0.85;}
-
-footer{padding:80px 60px;text-align:left;color:var(--subtext);}
-
-@media(max-width:900px){
-  header h1.banner{font-size:2.2rem;}
-  nav{gap:20px;}
-  nav a{font-size:1rem;}
-  section h2{font-size:2rem;}
-  .profile-container{flex-direction:column;align-items:center;}
-  .profile-container img{width:200px;}
+h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
-</style>
-</head>
-<body>
 
-<header>
-  <h1 class="banner">PORTFOLIO</h1>
-  <nav>
-    <a href="#home">홈</a>
-    <a href="#videos">비디오</a>
-    <a href="#designs">디자인</a>
-    <a href="#contact">문의사항</a>
-  </nav>
-</header>
+/* -------------------- 상단 배너 -------------------- */
+.header-title {
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  padding: 40px 0 10px 0;
+  letter-spacing: 3px;
+}
 
-<main>
-  <!-- 메인 화면: 프로필 -->
-  <section id="home">
-    <div class="profile-container">
-      <img src="images/profile.jpg" alt="프로필 사진">
-      <div class="profile-info">
-        <h3>디자이너 정윤</h3>
-        <ul>
-          <li>네마프 영화제 서포터즈 2025, 2024</li>
-          <li>노동인권영화제 서포터즈 2020</li>
-          <li>종로콘텐츠클러스터 영상제작 2023</li>
-        </ul>
-        <div class="tools">
-          <strong>사용 가능한 툴:</strong>
-          <span>After Effects</span>
-          <span>Premiere Pro</span>
-          <span>Photoshop</span>
-          <span>InDesign</span>
-          <span>Figma</span>
-        </div>
-      </div>
-    </div>
-  </section>
+/* -------------------- 메뉴바 -------------------- */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+}
 
-  <!-- 비디오 섹션 -->
-  <section id="videos">
-    <h2>비디오</h2>
-    <div class="project-list">
-      <div class="project-item">
-        <h3>모션그래픽 1</h3>
-        <video controls><source src="videos/motion1.mp4" type="video/mp4"></video>
-      </div>
-      <div class="project-item">
-        <h3>모션그래픽 2</h3>
-        <video controls><source src="videos/motion2.mp4" type="video/mp4"></video>
-      </div>
-      <div class="project-item">
-        <h3>모션그래픽 3</h3>
-        <video controls><source src="videos/motion3.mp4" type="video/mp4"></video>
-      </div>
-      <div class="project-item">
-        <h3>다큐멘터리</h3>
-        <video controls><source src="videos/documentary.mp4" type="video/mp4"></video>
-      </div>
-      <div class="project-item">
-        <h3>영화</h3>
-        <video controls><source src="videos/movie.mp4" type="video/mp4"></video>
-      </div>
-    </div>
-  </section>
+.navbar button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding-bottom: 6px;
+  border-bottom: 2px solid transparent;
+}
 
-  <!-- 디자인 섹션 -->
-  <section id="designs">
-    <h2>디자인</h2>
-    <div class="project-list">
-      <div class="project-item">
-        <h3>패키지 디자인</h3>
-        <img src="images/package.jpg" alt="패키지 디자인">
-        <a href="files/package_design.pdf" class="file-link" download>파일 다운로드</a>
-      </div>
-      <div class="project-item">
-        <h3>UI/UX 디자인</h3>
-        <img src="images/uiux.jpg" alt="UI/UX 디자인">
-        <a href="files/uiux_design.pdf" class="file-link" download>파일 다운로드</a>
-      </div>
-      <div class="project-item">
-        <h3>편집 디자인 책</h3>
-        <img src="images/editing_book.jpg" alt="편집 디자인 책">
-        <a href="files/editing_design.pdf" class="file-link" download>파일 다운로드</a>
-      </div>
-      <div class="project-item">
-        <h3>동화책</h3>
-        <img src="images/storybook.jpg" alt="동화책 디자인">
-        <a href="files/storybook_design.pdf" class="file-link" download>파일 다운로드</a>
-      </div>
-    </div>
-  </section>
+.navbar button:hover,
+.navbar button.active {
+  border-bottom: 2px solid #222;
+}
 
-  <!-- 문의사항 -->
-  <section id="contact">
-    <h2>문의사항</h2>
-    <form>
-      <input type="text" placeholder="이름" required>
-      <input type="email" placeholder="이메일" required>
-      <textarea placeholder="문의 내용을 작성해주세요" rows="6" required></textarea>
-      <button type="submit">보내기</button>
-    </form>
-  </section>
-</main>
-
-<footer>
-  <p>© 2025 정윤 — Design & Motion Portfolio</p>
-</footer>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<title>Grid Layout 12 Column</title>
-<style>
-
-/* 컨테이너: 1920px일 때 1880px 고정 + 반응형 */
+/* -------------------- 12단 그리드 컨테이너 -------------------- */
 .grid-wrapper {
-  width: min(calc(100% - 40px), 1880px);  /* 1920px에서는 1880px로 고정, 그 이하에서는 자동 줄어듦 */
-  margin: 0 auto;                         /* 가운데 정렬 */
-  padding: 0 20px;                        /* 좌우 마진 20px */
+  width: min(calc(100% - 40px), 1880px);
+  margin: 0 auto;
+  padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 20px;
   box-sizing: border-box;
 }
 
-/* 박스 디자인 */
 .grid-item {
-  background: #ccc;
+  background: #ddd;
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 160px;
+  align-items: center;
+  height: 200px;
+  border-radius: 10px;
   font-size: 24px;
   font-weight: 600;
   color: #555;
-  border-radius: 6px;
 }
 
-/* 각 박스의 column span */
-.item1 { grid-column: span 12; height: 200px; }
-.item2 { grid-column: span 6; }
-.item3 { grid-column: span 6; }
-.item4 { grid-column: span 4; }
-.item5 { grid-column: span 4; }
-.item6 { grid-column: span 4; }
+/* -------------------- 섹션 기본 숨김 -------------------- */
+section {
+  display: none;
+  padding-bottom: 100px;
+}
 
-/* 반응형: 1024 이하에서는 6단 */
+/* -------------------- 프로필 섹션 -------------------- */
+#profile {
+  display: block; /* 첫 화면만 보이기 */
+}
+
+.profile-box {
+  width: min(calc(100% - 40px), 1880px);
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.profile-img {
+  width: 320px;
+  height: 400px;
+  background: #ccc;
+  border-radius: 12px;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-info h3 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.profile-info ul {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.profile-info .tools {
+  margin-top: 20px;
+  font-size: 18px;
+  background: #eee;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+/* -------------------- 비디오 / 디자인 리스트 -------------------- */
+.list-item {
+  width: min(calc(100% - 40px), 1880px);
+  margin: 0 auto 20px auto;
+  height: 300px;
+  background: #ddd;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  color: #666;
+}
+
+/* -------------------- 문의사항 폼 -------------------- */
+form {
+  width: min(calc(100% - 40px), 600px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input, textarea {
+  padding: 14px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+textarea {
+  height: 200px;
+}
+
+button.submit {
+  padding: 14px;
+  background: #000;
+  color: #fff;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+/* -------------------- 반응형 -------------------- */
 @media (max-width: 1024px) {
   .grid-wrapper {
     grid-template-columns: repeat(6, 1fr);
   }
-  .item1 { grid-column: span 6; }
-  .item2 { grid-column: span 6; }
-  .item3 { grid-column: span 6; }
-  .item4 { grid-column: span 3; }
-  .item5 { grid-column: span 3; }
-  .item6 { grid-column: span 3; }
 }
 
-/* 모바일: 600 이하에서는 2단 */
-@media (max-width: 600px) {
-  .grid-wrapper {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 700px) {
+  .profile-box {
+    flex-direction: column;
+    text-align: center;
   }
-  .item1 { grid-column: span 2; }
-  .item2 { grid-column: span 2; }
-  .item3 { grid-column: span 2; }
-  .item4 { grid-column: span 1; }
-  .item5 { grid-column: span 1; }
-  .item6 { grid-column: span 1; }
 }
-
 </style>
+
+<script>
+/* 메뉴 클릭 시 섹션 전환 */
+function showSection(id) {
+  document.querySelectorAll("section").forEach(sec => sec.style.display = "none");
+  document.getElementById(id).style.display = "block";
+
+  document.querySelectorAll(".navbar button").forEach(btn => btn.classList.remove("active"));
+  document.getElementById("btn-" + id).classList.add("active");
+}
+</script>
+
 </head>
 <body>
 
-<div class="grid-wrapper">
-  <div class="grid-item item1">01</div>
-  <div class="grid-item item2">02</div>
-  <div class="grid-item item3">03</div>
-  <div class="grid-item item4">04</div>
-  <div class="grid-item item5">05</div>
-  <div class="grid-item item6">06</div>
+<div class="header-title">PORTFOLIO</div>
+
+<!-- -------------------- 메뉴바 -------------------- -->
+<div class="navbar">
+  <button id="btn-profile" class="active" onclick="showSection('profile')">프로필</button>
+  <button id="btn-home" onclick="showSection('home')">홈</button>
+  <button id="btn-video" onclick="showSection('video')">비디오</button>
+  <button id="btn-design" onclick="showSection('design')">디자인</button>
+  <button id="btn-contact" onclick="showSection('contact')">문의사항</button>
 </div>
+
+<!-- -------------------- 프로필 페이지 -------------------- -->
+<section id="profile">
+  <div class="profile-box">
+    <div class="profile-img"></div>
+    <div class="profile-info">
+      <h3>디자이너 000</h3>
+      <ul>
+        <li>네마프 영화제 서포터즈 – 2025, 2024</li>
+        <li>노동인권영화제 서포터즈 – 2020</li>
+        <li>종로콘텐츠클러스터 영상제작 – 2023</li>
+      </ul>
+      <div class="tools">
+        사용 가능 툴:<br>
+        After Effects · Premiere Pro · Photoshop · InDesign · Figma
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- -------------------- 홈 (작품 4개씩 그리드) -------------------- -->
+<section id="home">
+  <h2 style="text-align:center;">홈 – 작품 보기</h2>
+  <div class="grid-wrapper">
+    <div class="grid-item" style="grid-column: span 3;">작품 01</div>
+    <div class="grid-item" style="grid-column: span 3;">작품 02</div>
+    <div class="grid-item" style="grid-column: span 3;">작품 03</div>
+    <div class="grid-item" style="grid-column: span 3;">작품 04</div>
+  </div>
+</section>
+
+<!-- -------------------- 비디오 페이지 -------------------- -->
+<section id="video">
+  <h2 style="text-align:center;">비디오</h2>
+  <div class="list-item">모션그래픽 01</div>
+  <div class="list-item">모션그래픽 02</div>
+  <div class="list-item">모션그래픽 03</div>
+  <div class="list-item">다큐멘터리 01</div>
+  <div class="list-item">영화 01</div>
+</section>
+
+<!-- -------------------- 디자인 페이지 -------------------- -->
+<section id="design">
+  <h2 style="text-align:center;">디자인</h2>
+  <div class="list-item">패키지 디자인</div>
+  <div class="list-item">UI/UX 디자인</div>
+  <div class="list-item">편집 디자인 (책)</div>
+  <div class="list-item">동화책 디자인</div>
+</section>
+
+<!-- -------------------- 문의사항 -------------------- -->
+<section id="contact">
+  <h2 style="text-align:center;">문의사항</h2>
+  <form>
+    <input type="text" placeholder="이름">
+    <input type="email" placeholder="이메일">
+    <textarea placeholder="의뢰 내용"></textarea>
+    <button class="submit">보내기</button>
+  </form>
+</section>
 
 </body>
 </html>
