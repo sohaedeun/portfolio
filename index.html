@@ -23,15 +23,14 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-size: 10rem; /* 글씨 크기 */
+    font-size: 10rem;
     font-weight: 800;
     cursor: pointer;
     user-select: none;
     text-align: center;
-    animation: rainbow 3.5s steps(7, end) infinite; /* 0.5초마다 색상 변경 */
+    animation: rainbow 3.5s steps(7, end) infinite;
 }
 
-/* 무지개 색상 애니메이션 */
 @keyframes rainbow {
     0% { color: red; }
     14% { color: orange; }
@@ -78,8 +77,8 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 200px;  /* 버튼 폭 2배 */
-    height: 100px; 
+    width: 200px;
+    height: 100px;
     font-size: 1.2rem;
     font-weight: 700;
     text-decoration: none;
@@ -123,6 +122,27 @@ body {
 #profile-info {
     max-width: 600px;
     text-align: left;
+}
+
+.tool-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.tool-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tool-icon {
+    width: 24px;
+    height: 24px;
+    background-color: #ddd;
+    display: inline-block;
+    border-radius: 4px;
 }
 
 /* 그리드 카드 */
@@ -171,23 +191,17 @@ form button {
 </head>
 <body>
 
-<!-- ======================
-     인트로
-====================== -->
+<!-- 인트로 -->
 <section id="intro" onclick="showBanner()">
     PORTFOLIO
 </section>
 
-<!-- ======================
-     배너
-====================== -->
+<!-- 배너 -->
 <section id="banner" onclick="hideBanner()">
     PORTFOLIO
 </section>
 
-<!-- ======================
-     메뉴
-====================== -->
+<!-- 메뉴 -->
 <header id="navbar">
     <nav class="nav-menu">
         <a class="menu-btn" onclick="showSection('profile')">프로필</a>
@@ -197,9 +211,7 @@ form button {
     </nav>
 </header>
 
-<!-- ======================
-     프로필
-====================== -->
+<!-- 프로필 -->
 <section id="profile" class="page-section">
     <div id="profile-container">
         <img src="https://via.placeholder.com/200" alt="프로필">
@@ -208,15 +220,20 @@ form button {
             <p>이력<br>
             - 네마프 영화제 서포터즈 2025, 2024<br>
             - 노동인권영화제 서포터즈 2020<br>
-            - 종로콘텐츠클러스터 영상제작 2023<br><br>
-            사용 가능 툴: After Effects, Premiere Pro, Photoshop, InDesign, Figma</p>
+            - 종로콘텐츠클러스터 영상제작 2023<br></p>
+            
+            <div class="tool-list">
+                <div class="tool-item"><div class="tool-icon"></div>After Effects</div>
+                <div class="tool-item"><div class="tool-icon"></div>Premiere Pro</div>
+                <div class="tool-item"><div class="tool-icon"></div>Photoshop</div>
+                <div class="tool-item"><div class="tool-icon"></div>InDesign</div>
+                <div class="tool-item"><div class="tool-icon"></div>Figma</div>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- ======================
-     비디오
-====================== -->
+<!-- 비디오 -->
 <section id="video" class="page-section">
     <h2>Video Works</h2>
     <div class="grid-works">
@@ -227,9 +244,7 @@ form button {
     </div>
 </section>
 
-<!-- ======================
-     디자인
-====================== -->
+<!-- 디자인 -->
 <section id="design" class="page-section">
     <h2>Design Works</h2>
     <div class="grid-works">
@@ -240,9 +255,7 @@ form button {
     </div>
 </section>
 
-<!-- ======================
-     문의사항
-====================== -->
+<!-- 문의사항 -->
 <section id="contact" class="page-section">
     <h2>문의사항</h2>
     <form>
@@ -277,7 +290,6 @@ function hideBanner() {
     hideAllSections();
 }
 
-// 새로고침 시 인트로 화면 표시
 window.addEventListener("load", () => {
     document.getElementById("intro").style.display = "flex";
     document.getElementById("banner").style.display = "none";
