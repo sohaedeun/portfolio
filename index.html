@@ -258,3 +258,53 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
+<!-- ======================
+     메뉴
+====================== -->
+<header id="navbar">
+    <nav class="nav-menu">
+        <a class="menu-btn" onclick="showSection('profile')">프로필</a>
+        <a class="menu-btn" onclick="showSection('video')">비디오</a>
+        <a class="menu-btn" onclick="showSection('design')">디자인</a>
+        <a class="menu-btn" onclick="showSection('contact')">문의사항</a>
+    </nav>
+</header>
+
+<style>
+/* ======================
+   메뉴 버튼
+====================== */
+#navbar {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0; /* 버튼 자체에서 높이 지정 */
+    background: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 9;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.menu-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;      /* 기존 대비 가로 2배 */
+    height: 20vh;       /* 화면 5분의 1 정도 */
+    font-size: 2rem;   /* 텍스트 확대 */
+    font-weight: 700;
+    text-decoration: none;
+    color: #222;
+    cursor: pointer;
+    border-radius: 12px;
+    border: 2px solid #222;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+</style>
