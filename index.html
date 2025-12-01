@@ -16,34 +16,23 @@ body {
 }
 
 /* ======================
-   인트로 & 배너
+   인트로
 ====================== */
-#intro, #banner {
+#intro {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 10rem; /* 글씨 2배 키움 */
+    height: 100vh;
+    font-size: 10rem; /* 글씨 크기 */
     font-weight: 800;
     cursor: pointer;
     user-select: none;
     text-align: center;
-    transition: all 0.5s ease;
+    animation: rainbow 3.5s steps(7, end) infinite; /* 0.5초마다 색상 변경 */
 }
 
-#intro {
-    height: 100vh;
-    animation: rainbowText 3.5s infinite;
-}
-
-#banner {
-    height: 25vh;
-    display: none;
-    font-size: 5rem;
-    color: #000;
-}
-
-/* 무지개 글씨 애니메이션 */
-@keyframes rainbowText {
+/* 무지개 색상 애니메이션 */
+@keyframes rainbow {
     0% { color: red; }
     14% { color: orange; }
     28% { color: yellow; }
@@ -55,13 +44,29 @@ body {
 }
 
 /* ======================
+   배너
+====================== */
+#banner {
+    display: none;
+    height: 25vh;
+    font-size: 5rem;
+    font-weight: 800;
+    text-align: center;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* ======================
    메뉴
 ====================== */
 #navbar {
     display: none;
     justify-content: center;
     gap: 20px;
-    padding: 10px 20px;
+    padding: 20px 0;
     background: #fff;
     position: sticky;
     top: 0;
@@ -73,7 +78,7 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 200px;  /* 기존 폭 2배 */
+    width: 200px;  /* 버튼 폭 2배 */
     height: 100px; 
     font-size: 1.2rem;
     font-weight: 700;
@@ -272,6 +277,7 @@ function hideBanner() {
     hideAllSections();
 }
 
+// 새로고침 시 인트로 화면 표시
 window.addEventListener("load", () => {
     document.getElementById("intro").style.display = "flex";
     document.getElementById("banner").style.display = "none";
