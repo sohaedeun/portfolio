@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sohaedeun Portfolio</title>
-
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
 
@@ -23,7 +22,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5rem;
+    font-size: 10rem; /* 글씨 2배 키움 */
     font-weight: 800;
     cursor: pointer;
     user-select: none;
@@ -33,25 +32,26 @@ body {
 
 #intro {
     height: 100vh;
+    animation: rainbowText 3.5s infinite;
 }
 
 #banner {
-    height: 25vh; /* 배너 높이 */
+    height: 25vh;
     display: none;
+    font-size: 5rem;
+    color: #000;
 }
 
-#banner-text {
-    background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-    background-size: 600% 100%;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: rainbow 10s linear infinite;
-}
-
-@keyframes rainbow {
-    0% {background-position: 0% 0%;}
-    50% {background-position: 100% 0%;}
-    100% {background-position: 0% 0%;}
+/* 무지개 글씨 애니메이션 */
+@keyframes rainbowText {
+    0% { color: red; }
+    14% { color: orange; }
+    28% { color: yellow; }
+    42% { color: green; }
+    57% { color: blue; }
+    71% { color: indigo; }
+    85% { color: violet; }
+    100% { color: red; }
 }
 
 /* ======================
@@ -73,8 +73,8 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 200px; /* 폭 2배 넓힘 */
-    height: 100px;
+    width: 200px;  /* 기존 폭 2배 */
+    height: 100px; 
     font-size: 1.2rem;
     font-weight: 700;
     text-decoration: none;
@@ -170,14 +170,14 @@ form button {
      인트로
 ====================== -->
 <section id="intro" onclick="showBanner()">
-    <div id="intro-text">PORTFOLIO</div>
+    PORTFOLIO
 </section>
 
 <!-- ======================
      배너
 ====================== -->
 <section id="banner" onclick="hideBanner()">
-    <div id="banner-text">PORTFOLIO</div>
+    PORTFOLIO
 </section>
 
 <!-- ======================
@@ -263,7 +263,7 @@ function showBanner() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("banner").style.display = "flex";
     document.getElementById("navbar").style.display = "flex";
-    showSection('profile'); // 배너 클릭 시 프로필 기본 표시
+    showSection('profile');
 }
 
 function hideBanner() {
@@ -273,7 +273,7 @@ function hideBanner() {
 }
 
 window.addEventListener("load", () => {
-    document.getElementById("intro").style.display = "flex"; // 새로고침 시 인트로
+    document.getElementById("intro").style.display = "flex";
     document.getElementById("banner").style.display = "none";
     document.getElementById("navbar").style.display = "none";
 });
