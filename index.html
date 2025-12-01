@@ -205,3 +205,83 @@ footer{padding:80px 60px;text-align:left;color:var(--subtext);}
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>Grid Layout 12 Column</title>
+<style>
+
+/* 컨테이너: 1920px일 때 1880px 고정 + 반응형 */
+.grid-wrapper {
+  width: min(calc(100% - 40px), 1880px);  /* 1920px에서는 1880px로 고정, 그 이하에서는 자동 줄어듦 */
+  margin: 0 auto;                         /* 가운데 정렬 */
+  padding: 0 20px;                        /* 좌우 마진 20px */
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+/* 박스 디자인 */
+.grid-item {
+  background: #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #555;
+  border-radius: 6px;
+}
+
+/* 각 박스의 column span */
+.item1 { grid-column: span 12; height: 200px; }
+.item2 { grid-column: span 6; }
+.item3 { grid-column: span 6; }
+.item4 { grid-column: span 4; }
+.item5 { grid-column: span 4; }
+.item6 { grid-column: span 4; }
+
+/* 반응형: 1024 이하에서는 6단 */
+@media (max-width: 1024px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .item1 { grid-column: span 6; }
+  .item2 { grid-column: span 6; }
+  .item3 { grid-column: span 6; }
+  .item4 { grid-column: span 3; }
+  .item5 { grid-column: span 3; }
+  .item6 { grid-column: span 3; }
+}
+
+/* 모바일: 600 이하에서는 2단 */
+@media (max-width: 600px) {
+  .grid-wrapper {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .item1 { grid-column: span 2; }
+  .item2 { grid-column: span 2; }
+  .item3 { grid-column: span 2; }
+  .item4 { grid-column: span 1; }
+  .item5 { grid-column: span 1; }
+  .item6 { grid-column: span 1; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="grid-wrapper">
+  <div class="grid-item item1">01</div>
+  <div class="grid-item item2">02</div>
+  <div class="grid-item item3">03</div>
+  <div class="grid-item item4">04</div>
+  <div class="grid-item item5">05</div>
+  <div class="grid-item item6">06</div>
+</div>
+
+</body>
+</html>
