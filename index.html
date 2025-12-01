@@ -8,13 +8,13 @@
     <style>
         body {
             margin: 0;
-            background: #ffffff;
             font-family: 'Pretendard', sans-serif;
             color: #222;
             scroll-behavior: smooth;
+            background: #ffffff;
         }
 
-        /* 전체 레이아웃 기준 1920px / 양쪽 마진 20px */
+        /* 컨테이너: 12단 1920 기준 / 좌우 20px */
         .container {
             width: 1880px;
             max-width: 100%;
@@ -22,108 +22,111 @@
             padding: 0 20px;
         }
 
-        /* 상단 배너 */
-        .banner {
-            text-align: center;
-            padding: 40px 0 10px 0;
-            font-size: 36px;
-            font-weight: 700;
-            letter-spacing: 2px;
+        /* ======================
+           1. 인트로 화면
+        ====================== */
+        #intro {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 72px;
+            font-weight: 800;
+            cursor: pointer;
+            user-select: none;
         }
 
-        /* 메뉴바 */
-        .navbar {
+        /* ======================
+           2. 메뉴바 (인트로 이후)
+        ====================== */
+        #navbar {
+            display: none; /* 처음에는 숨김 */
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            z-index: 50;
+        }
+
+        .navbar-menu {
             display: flex;
             justify-content: center;
             gap: 40px;
-            padding-bottom: 30px;
         }
-        .navbar a {
+        .navbar-menu a {
             font-size: 18px;
             text-decoration: none;
             color: #333;
-            font-weight: 500;
-            padding: 8px 12px;
+            padding: 6px 10px;
         }
-        .navbar a:hover {
-            color: #000;
-            font-weight: 600;
+        .navbar-menu a:hover {
+            font-weight: 700;
         }
 
-        /* 프로필 페이지 */
-        #profile-section {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        /* ======================
+           3. 프로필
+        ====================== */
+        #profile {
+            min-height: 100vh;
+            padding-top: 120px;
             text-align: center;
         }
-        #profile-section img {
-            width: 180px;
-            height: 180px;
-            border-radius: 100%;
+        #profile img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
         }
 
-        /* 홈 작품 그리드 4×N */
-        #home {
-            margin-top: 80px;
+        /* ======================
+           4. 공통: 12단 그리드 레이아웃
+        ====================== */
+        .grid-section {
+            margin-top: 60px;
+        }
+        .grid-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
         }
         .grid-works {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
-            margin-bottom: 120px;
         }
         .work {
-            width: 100%;
             aspect-ratio: 1 / 1;
             background: #f4f4f4;
             border-radius: 12px;
-            overflow: hidden;
-        }
-
-        /* 섹션 제목 */
-        .section-title {
-            font-size: 28px;
-            font-weight: 600;
-            margin: 80px 0 30px 0;
-        }
-
-        /* 문의사항 폼 */
-        #contact input, #contact textarea {
-            width: 100%;
-            max-width: 600px;
-            padding: 14px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-        #contact button {
-            padding: 14px 28px;
-            font-size: 16px;
-            border: none;
-            border-radius: 8px;
-            background: #333;
-            color: white;
-            cursor: pointer;
-        }
-        #contact button:hover {
-            background: #000;
         }
     </style>
-</head>
 
+    <script>
+        // 인트로 클릭 → 프로필로 스크롤 + 메뉴 등장
+        function enterPortfolio() {
+            document.getElementById("navbar").style.display = "block";
+            document.getElementById("profile").scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+
+</head>
 <body>
 
-    <!-- 상단 메뉴 고정 -->
-    <header class="container">
-        <div class="banner">PORTFOLIO</div>
+    <!-- ======================
+         1. 인트로 화면
+    ====================== -->
+    <section id="intro" onclick="enterPortfolio()">
+        PORTFOLIO
+    </section>
 
-        <nav class="navbar">
+    <!-- ======================
+         2. 메뉴바
+    ====================== -->
+    <header id="navbar" class="container">
+        <nav class="navbar-menu">
+            <a href="#profile">프로필</a>
             <a href="#home">홈</a>
             <a href="#video">비디오</a>
             <a href="#design">디자인</a>
@@ -131,55 +134,58 @@
         </nav>
     </header>
 
-    <!-- 1) 처음 뜨는 프로필 화면 -->
-    <section id="profile-section" class="container">
-        <img src="https://via.placeholder.com/200" alt="프로필 이미지">
-        <h2>정윤 Portfolio</h2>
-        <p>디자인 & 영상 포트폴리오</p>
-        <p style="margin-top:10px;">아래 메뉴를 클릭해 포트폴리오를 확인하세요.</p>
+    <!-- ======================
+         3. 프로필 화면
+    ====================== -->
+    <section id="profile" class="container">
+        <img src="https://via.placeholder.com/200" alt="profile">
+        <h2>정윤 · Portfolio</h2>
+        <p>디자인 & 영상 디자이너</p>
     </section>
 
-    <!-- 2) 홈: 작품 4개씩 정렬 -->
-    <section id="home" class="container">
-        <div class="section-title">Home / Works</div>
-
+    <!-- ======================
+         4. 홈 (그리드)
+    ====================== -->
+    <section id="home" class="container grid-section">
+        <div class="grid-title">Home / Works</div>
         <div class="grid-works">
-            <div class="work"></div>
-            <div class="work"></div>
-            <div class="work"></div>
-            <div class="work"></div>
-
-            <div class="work"></div>
-            <div class="work"></div>
-            <div class="work"></div>
-            <div class="work"></div>
+            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
+            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
         </div>
     </section>
 
-    <!-- 3) 비디오 섹션 -->
-    <section id="video" class="container">
-        <div class="section-title">Video</div>
-        <p>여기에 영상 썸네일 또는 영상 리스트를 추가할 수 있습니다.</p>
+    <!-- ======================
+         5. 비디오 섹션
+    ====================== -->
+    <section id="video" class="container grid-section">
+        <div class="grid-title">Video Works</div>
+        <div class="grid-works">
+            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
+            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
+        </div>
     </section>
 
-    <!-- 4) 디자인 섹션 -->
-    <section id="design" class="container">
-        <div class="section-title">Design</div>
-        <p>여기에 디자인 작품 리스트를 넣어주세요.</p>
+    <!-- ======================
+         6. 디자인 섹션
+    ====================== -->
+    <section id="design" class="container grid-section">
+        <div class="grid-title">Design</div>
+        <div class="grid-works">
+            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
+            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
+        </div>
     </section>
 
-    <!-- 5) 문의사항 -->
-    <section id="contact" class="container">
-        <div class="section-title">문의사항</div>
-
-        <form>
-            <input type="text" placeholder="이름">
-            <input type="email" placeholder="이메일">
-            <textarea rows="5" placeholder="문의 내용을 입력하세요"></textarea>
-            <br>
-            <button type="submit">보내기</button>
-        </form>
+    <!-- ======================
+         7. 문의사항
+    ====================== -->
+    <section id="contact" class="container grid-section">
+        <div class="grid-title">문의사항</div>
+        <div class="grid-works">
+            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
+        </div>
     </section>
+
 
 </body>
 </html>
