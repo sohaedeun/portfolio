@@ -30,19 +30,20 @@ body {
     user-select: none;
     text-align: center;
     background: #fff;
-    color: black;
 }
 
 #intro-text {
     background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+    background-size: 600% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: rainbow 3s linear infinite;
+    animation: rainbow 10s linear infinite;
 }
 
 @keyframes rainbow {
-    0% {background-position: 0%;}
-    100% {background-position: 100%;}
+    0% {background-position: 0% 0%;}
+    50% {background-position: 100% 0%;}
+    100% {background-position: 0% 0%;}
 }
 
 /* ======================
@@ -58,7 +59,7 @@ body {
     top: 0;
     z-index: 9;
     border-bottom: 1px solid #e6e6e6;
-    margin-top: -5px; /* 배너 바로 아래 */
+    margin-top: -5px;
 }
 
 .menu-btn {
