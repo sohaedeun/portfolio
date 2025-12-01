@@ -14,7 +14,7 @@
             background: #ffffff;
         }
 
-        /* 컨테이너: 12단 1920 기준 / 좌우 20px */
+        /* 전체 12단 그리드 컨테이너 */
         .container {
             width: 1880px;
             max-width: 100%;
@@ -23,91 +23,132 @@
         }
 
         /* ======================
-           1. 인트로 화면
+           인트로 화면
         ====================== */
         #intro {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 72px;
+            font-size: 80px;
             font-weight: 800;
             cursor: pointer;
             user-select: none;
         }
 
         /* ======================
-           2. 메뉴바 (인트로 이후)
+           메뉴바
         ====================== */
         #navbar {
-            display: none; /* 처음에는 숨김 */
+            display: none; /* 초기 숨김 */
             position: sticky;
             top: 0;
-            background: #ffffff;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
-            z-index: 50;
+            background: white;
+            padding: 18px 0;
+            border-bottom: 1px solid #e6e6e6;
+            z-index: 100;
         }
 
-        .navbar-menu {
+        .navbar-inner {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .nav-menu {
+            display: flex;
             gap: 40px;
         }
-        .navbar-menu a {
-            font-size: 18px;
+
+        .nav-menu a {
             text-decoration: none;
-            color: #333;
-            padding: 6px 10px;
+            color: #222;
+            font-size: 18px;
+            cursor: pointer;
         }
-        .navbar-menu a:hover {
+
+        .nav-menu a:hover {
             font-weight: 700;
         }
 
         /* ======================
-           3. 프로필
+           공통 섹션 숨김/표시
+        ====================== */
+        section.page-section {
+            display: none;
+            padding-top: 80px;
+        }
+
+        /* ======================
+           프로필
         ====================== */
         #profile {
-            min-height: 100vh;
-            padding-top: 120px;
             text-align: center;
         }
+
         #profile img {
-            width: 160px;
-            height: 160px;
+            width: 170px;
+            height: 170px;
             border-radius: 50%;
             object-fit: cover;
             margin-bottom: 20px;
         }
 
         /* ======================
-           4. 공통: 12단 그리드 레이아웃
+           12단 그리드 작품 구조
         ====================== */
-        .grid-section {
-            margin-top: 60px;
-        }
         .grid-title {
             font-size: 28px;
             font-weight: 700;
             margin-bottom: 30px;
         }
+
         .grid-works {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 24px;
         }
+
         .work {
-            aspect-ratio: 1 / 1;
             background: #f4f4f4;
             border-radius: 12px;
+            aspect-ratio: 1 / 1;
         }
+
     </style>
 
     <script>
-        // 인트로 클릭 → 프로필로 스크롤 + 메뉴 등장
-        function enterPortfolio() {
+        // 모든 섹션 숨기기
+        function hideAllSections() {
+            document.querySelectorAll(".page-section").forEach(sec => {
+                sec.style.display = "none";
+            });
+        }
+
+        // 특정 섹션만 보이기
+        function showSection(id) {
+            hideAllSections();
             document.getElementById("navbar").style.display = "block";
-            document.getElementById("profile").scrollIntoView({ behavior: "smooth" });
+            document.getElementById(id).style.display = "block";
+        }
+
+        // 인트로에서 프로필로 이동
+        function enterPortfolio() {
+            document.getElementById("intro").style.display = "none";
+            showSection("profile");
+        }
+
+        // 로고 클릭 → 인트로 화면 복귀
+        function returnToIntro() {
+            hideAllSections();
+            document.getElementById("navbar").style.display = "none";
+            document.getElementById("intro").style.display = "flex";
         }
     </script>
 
@@ -115,38 +156,48 @@
 <body>
 
     <!-- ======================
-         1. 인트로 화면
+         인트로 화면
     ====================== -->
     <section id="intro" onclick="enterPortfolio()">
         PORTFOLIO
     </section>
 
     <!-- ======================
-         2. 메뉴바
+         메뉴바
     ====================== -->
     <header id="navbar" class="container">
-        <nav class="navbar-menu">
-            <a href="#profile">프로필</a>
-            <a href="#home">홈</a>
-            <a href="#video">비디오</a>
-            <a href="#design">디자인</a>
-            <a href="#contact">문의사항</a>
-        </nav>
+        <div class="navbar-inner">
+            <div class="logo" onclick="returnToIntro()">PORTFOLIO</div>
+            <nav class="nav-menu">
+                <a onclick="showSection('profile')">프로필</a>
+                <a onclick="showSection('home')">홈</a>
+                <a onclick="showSection('video')">비디오</a>
+                <a onclick="showSection('design')">디자인</a>
+                <a onclick="showSection('contact')">문의사항</a>
+            </nav>
+        </div>
     </header>
 
     <!-- ======================
-         3. 프로필 화면
+         프로필
     ====================== -->
-    <section id="profile" class="container">
-        <img src="https://via.placeholder.com/200" alt="profile">
-        <h2>정윤 · Portfolio</h2>
-        <p>디자인 & 영상 디자이너</p>
+    <section id="profile" class="container page-section">
+        <img src="https://via.placeholder.com/170" alt="profile">
+        <h2>디자이너 정윤</h2>
+
+        <p>이력<br>
+        - 네마프 영화제 서포터즈 2025, 2024<br>
+        - 노동인권영화제 서포터즈 2020<br>
+        - 종로콘텐츠클러스터 영상제작 2023<br>
+        <br>
+        사용 가능 툴: After Effects, Premiere Pro, Photoshop, InDesign, Figma
+        </p>
     </section>
 
     <!-- ======================
-         4. 홈 (그리드)
+         홈
     ====================== -->
-    <section id="home" class="container grid-section">
+    <section id="home" class="container page-section">
         <div class="grid-title">Home / Works</div>
         <div class="grid-works">
             <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
@@ -155,9 +206,9 @@
     </section>
 
     <!-- ======================
-         5. 비디오 섹션
+         비디오
     ====================== -->
-    <section id="video" class="container grid-section">
+    <section id="video" class="container page-section">
         <div class="grid-title">Video Works</div>
         <div class="grid-works">
             <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
@@ -166,10 +217,10 @@
     </section>
 
     <!-- ======================
-         6. 디자인 섹션
+         디자인
     ====================== -->
-    <section id="design" class="container grid-section">
-        <div class="grid-title">Design</div>
+    <section id="design" class="container page-section">
+        <div class="grid-title">Design Works</div>
         <div class="grid-works">
             <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
             <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
@@ -177,15 +228,14 @@
     </section>
 
     <!-- ======================
-         7. 문의사항
+         문의사항
     ====================== -->
-    <section id="contact" class="container grid-section">
+    <section id="contact" class="container page-section">
         <div class="grid-title">문의사항</div>
-        <div class="grid-works">
-            <div class="work"></div><div class="work"></div><div class="work"></div><div class="work"></div>
+        <div>
+            <p>이름 / 이메일 / 문의 내용을 입력하는 폼을 여기에 구성할 수 있습니다.</p>
         </div>
     </section>
-
 
 </body>
 </html>
