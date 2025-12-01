@@ -61,7 +61,7 @@ body {
     display: none;
     justify-content: center;
     gap: 20px;
-    padding: 10px 0;
+    padding: 10px 20px;
     background: #fff;
     position: sticky;
     top: 0;
@@ -73,9 +73,9 @@ body {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    width: 200px; /* 폭 2배 넓힘 */
     height: 100px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 700;
     text-decoration: none;
     color: #222;
@@ -176,7 +176,7 @@ form button {
 <!-- ======================
      배너
 ====================== -->
-<section id="banner" onclick="showIntro()">
+<section id="banner" onclick="hideBanner()">
     <div id="banner-text">PORTFOLIO</div>
 </section>
 
@@ -263,9 +263,10 @@ function showBanner() {
     document.getElementById("intro").style.display = "none";
     document.getElementById("banner").style.display = "flex";
     document.getElementById("navbar").style.display = "flex";
+    showSection('profile'); // 배너 클릭 시 프로필 기본 표시
 }
 
-function showIntro() {
+function hideBanner() {
     document.getElementById("banner").style.display = "none";
     document.getElementById("intro").style.display = "flex";
     hideAllSections();
