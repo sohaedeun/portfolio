@@ -17,10 +17,10 @@ body {
 }
 
 /* ======================
-   인트로 화면
+   배너 (인트로)
 ====================== */
-#intro {
-    height: 25vh; /* 화면 1/4 */
+#banner {
+    height: 33vh; /* 화면 1/3 */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,11 +31,11 @@ body {
     text-align: center;
     background: #fff;
     color: black;
-    position: relative;
+    z-index: 10;
 }
 
 /* 무지개빛 텍스트 효과 */
-#intro-text {
+#banner-text {
     background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -48,30 +48,40 @@ body {
 }
 
 /* ======================
-   메뉴바 (인트로 하단 중앙)
+   메뉴
 ====================== */
 #navbar {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    padding: 15px 0;
+    gap: 40px;
+    padding: 0;
     background: #fff;
-    border-bottom: 1px solid #e6e6e6;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 9;
+    border-bottom: 1px solid #e6e6e6;
 }
 
-.nav-menu a {
+.menu-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 180px;      /* 가로 2배 */
+    height: 20vh;       /* 화면 5분의 1 */
+    font-size: 2rem;   /* 텍스트 확대 */
+    font-weight: 700;
     text-decoration: none;
     color: #222;
-    font-weight: 600;
     cursor: pointer;
-    font-size: 1.2rem;
+    border-radius: 12px;
+    border: 2px solid #222;
+    transition: all 0.3s ease;
 }
 
-.nav-menu a:hover {
-    color: #28a745;
+.menu-btn:hover {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
 }
 
 /* ======================
@@ -150,10 +160,10 @@ form button {
 <body>
 
 <!-- ======================
-     인트로
+     배너
 ====================== -->
-<section id="intro" onclick="enterPortfolio()">
-    <div id="intro-text">PORTFOLIO</div>
+<section id="banner" onclick="enterPortfolio()">
+    <div id="banner-text">PORTFOLIO</div>
 </section>
 
 <!-- ======================
@@ -161,10 +171,10 @@ form button {
 ====================== -->
 <header id="navbar">
     <nav class="nav-menu">
-        <a onclick="showSection('profile')">프로필</a>
-        <a onclick="showSection('video')">비디오</a>
-        <a onclick="showSection('design')">디자인</a>
-        <a onclick="showSection('contact')">문의사항</a>
+        <a class="menu-btn" onclick="showSection('profile')">프로필</a>
+        <a class="menu-btn" onclick="showSection('video')">비디오</a>
+        <a class="menu-btn" onclick="showSection('design')">디자인</a>
+        <a class="menu-btn" onclick="showSection('contact')">문의사항</a>
     </nav>
 </header>
 
@@ -239,13 +249,12 @@ function hideAllSections() {
 
 function showSection(id) {
     hideAllSections();
-    document.getElementById("navbar").style.display = "flex";
     document.getElementById(id).style.display = "block";
     document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
 function enterPortfolio() {
-    document.getElementById("intro").style.display = "none";
+    document.getElementById("banner").style.display = "none"; // 배너 클릭 시 사라짐
     showSection("profile");
 }
 
@@ -258,53 +267,3 @@ window.addEventListener("load", () => {
 
 </body>
 </html>
-<!-- ======================
-     메뉴
-====================== -->
-<header id="navbar">
-    <nav class="nav-menu">
-        <a class="menu-btn" onclick="showSection('profile')">프로필</a>
-        <a class="menu-btn" onclick="showSection('video')">비디오</a>
-        <a class="menu-btn" onclick="showSection('design')">디자인</a>
-        <a class="menu-btn" onclick="showSection('contact')">문의사항</a>
-    </nav>
-</header>
-
-<style>
-/* ======================
-   메뉴 버튼
-====================== */
-#navbar {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    padding: 0; /* 버튼 자체에서 높이 지정 */
-    background: #fff;
-    position: sticky;
-    top: 0;
-    z-index: 9;
-    border-bottom: 1px solid #e6e6e6;
-}
-
-.menu-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 180px;      /* 기존 대비 가로 2배 */
-    height: 20vh;       /* 화면 5분의 1 정도 */
-    font-size: 2rem;   /* 텍스트 확대 */
-    font-weight: 700;
-    text-decoration: none;
-    color: #222;
-    cursor: pointer;
-    border-radius: 12px;
-    border: 2px solid #222;
-    transition: all 0.3s ease;
-}
-
-.menu-btn:hover {
-    color: #fff;
-    background-color: #28a745;
-    border-color: #28a745;
-}
-</style>
